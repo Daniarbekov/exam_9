@@ -1,4 +1,4 @@
-from django.views.generic import  CreateView, DetailView
+from django.views.generic import  CreateView, DetailView, UpdateView
 from webapp.forms import PhotoForm
 from webapp.models import Photo
 
@@ -16,3 +16,11 @@ class PhotoCreate(CreateView):
 class PhotoView(DetailView):
     template_name = 'photo_detail.html'
     model = Photo
+
+
+class PhotoUpdateView(UpdateView):
+    template_name = 'photo_update.html'
+    form_class = PhotoForm
+    model = Photo
+    context_object_name = 'photo'
+    

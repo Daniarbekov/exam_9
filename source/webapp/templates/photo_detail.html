@@ -5,6 +5,7 @@
     <div class="card mb-3">
       <img src="{{photo.image.url}}" class="card-img-top" alt="img">
       <div class="card-body">
+        <a href="{% url 'photo_update' photo.pk %}">Редактировать</a>
         <p class="card-text">{{photo.note}}</p>
         <p class="card-text"><small class="text-muted">Автор: {{photo.author.username}}</small></p>
         <p class="card-text"><small class="text-muted">Дата публикациии: {{photo.created_at| date:"d-m-Y" }}</small></p>
