@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title%}Detail{% endblock%}
+    {% block content%}
+<div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Имя пользователя: {{user_obj.username}}</h5>
+          <p>Имя: {{user_obj.first_name}}</p>
+          <p>Фамилия: {{user_obj.last_name}}</p>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

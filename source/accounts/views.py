@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, DetailView
 from django.contrib.auth import get_user_model
 from accounts.forms import UserRegistrationForm, LoginForm
 
@@ -47,3 +47,10 @@ class LoginView(TemplateView):
 def logout_view(request):
     logout(request)
     return redirect('index')
+
+
+
+class UserView(DetailView):
+    template_name = 'user_detail.html'
+    model = get_user_model()
+    context_object_name = 'user_obj'
