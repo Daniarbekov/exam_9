@@ -42,3 +42,8 @@ class LoginView(TemplateView):
         else:
             form = LoginForm(request.POST)
         return self.render_to_response(context={'form':form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
