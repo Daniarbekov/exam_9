@@ -1,6 +1,7 @@
-from django.views.generic import  CreateView, DetailView, UpdateView
+from django.views.generic import  CreateView, DetailView, UpdateView, DeleteView
 from webapp.forms import PhotoForm
 from webapp.models import Photo
+from django.urls import reverse_lazy
 
 
 class PhotoCreate(CreateView):
@@ -24,3 +25,8 @@ class PhotoUpdateView(UpdateView):
     model = Photo
     context_object_name = 'photo'
     
+
+class PhotoDeleteView(DeleteView):
+    template_name = 'photo_delete.html'
+    model = Photo
+    success_url = reverse_lazy('index')
