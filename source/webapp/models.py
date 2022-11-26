@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 
 
-class Photo(models.Models):
+class Photo(models.Model):
     image = models.ImageField(
         verbose_name='Фотография', 
         upload_to='products'
