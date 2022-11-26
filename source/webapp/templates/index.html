@@ -1,20 +1,53 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title%}Home{% endblock %}
 {% block menu%}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'photo_add' %}">Добавить Фото</a>
 {% endblock %}
 {% block content %}
-<div class="card-box" >
+<div class="card-group">
             {% for photo in photos %}
-            <div class="card mb-3">
+              <div class="card">
                 <img src="{{photo.image.url}}" class="card-img-top" alt="img">
                 <div class="card-body">
                   <p class="card-text">{{photo.note}}</p>
                   <p class="card-text"><small class="text-muted">{{photo.author.username}}</small></p>
                   <a href="{% url 'photo_detail' photo.pk %}">Детальная страница фотографии</a>
                 </div>
-              </div>
           {% endfor %}
-    </div>
+</div>
 {% endblock %}
+
+
+
+
+
+
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('#fav').click(function(){
+      alert('asdasdas')
+      $.ajax({
+        url: $(this).data('url'),
+        method:"POST",
+        data: {
+          "pk": $(this).data('id'),
+        },
+        success: function(data){
+          alert(data)
+        },
+        error: function(data){
+          alert(data)
+        };
+      })
+    })
+  })
+</script>
+
+
+

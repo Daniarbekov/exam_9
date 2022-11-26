@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% block title%}Detail{% endblock%}
     {% block content%}
-    <div class="card mb-3">
+    <div class="card card-detail mb-3" style="max-width: 600px; max-width:600px">
       <img src="{{photo.image.url}}" class="card-img-top" alt="img">
       <div class="card-body">
         <a href="{% url 'photo_update' photo.pk %}">Редактировать</a>

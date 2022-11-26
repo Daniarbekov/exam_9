@@ -23,3 +23,7 @@ class Photo(models.Model):
         verbose_name='дата создания',
         auto_now_add=True
         )
+    favorites = models.ManyToManyField(
+        verbose_name='в избранных',
+        related_name='photos',
+        to=get_user_model())

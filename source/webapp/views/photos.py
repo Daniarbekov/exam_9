@@ -1,11 +1,16 @@
 from django.views.generic import  CreateView, DetailView, UpdateView, DeleteView
 from webapp.forms import PhotoForm
 from webapp.models import Photo
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import  UserPassesTestMixin, LoginRequiredMixin
 
 
-class PhotoCreate(LoginRequiredMixin,CreateView):
+class SuccessDetailUrlMixin:
+    def get_success_url(self):
+        return reverse('photo_detail', kwargs={'pk': self.object.pk})
+
+
+class PhotoCreate(LoginRequiredMixin,SuccessDetailUrlMixin,CreateView):
     template_name = 'add_photo.html'
     form_class = PhotoForm
     model = Photo
@@ -20,7 +25,7 @@ class PhotoView(DetailView):
     model = Photo
 
 
-class PhotoUpdateView(UserPassesTestMixin, UpdateView):
+class PhotoUpdateView(UserPassesTestMixin, SuccessDetailUrlMixin,UpdateView):
     template_name = 'photo_update.html'
     form_class = PhotoForm
     model = Photo
